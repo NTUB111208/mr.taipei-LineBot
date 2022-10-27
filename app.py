@@ -38,7 +38,7 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     if re.match('到站提醒',msg):
-        time.sleep(300)
+        time.sleep(3)
         line_bot_api.reply_message(event.reply_token,TextSendMessage('即將到站，請準備下車～'))
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
