@@ -5,6 +5,7 @@ from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 import time
+from datetime import datetime, date, timezone, timedelta
 
 app = Flask(__name__)
 
@@ -40,8 +41,10 @@ def handle_message(event):
     if re.match('到站提醒',msg):
         time.sleep(3)
         line_bot_api.reply_message(event.reply_token,TextSendMessage('即將到站，請準備下車～'))
+    if re.match('查詢累積金額回饋',msg):
+        line_bot_api.reply_message(event.reply_token,TextSendMessage('查詢累積金額回饋'))
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage('感謝您的訊息！\n很抱歉，本帳號無法個別回覆用戶的訊息。\n請利用圖文選單操作～'))
 
 #主程式
 import os
